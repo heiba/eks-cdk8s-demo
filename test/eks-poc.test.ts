@@ -3,7 +3,7 @@
 // import * as EksPoc from '../lib/eks-poc-stack';
 
 // example test. To run these tests, uncomment this file along with the
-// example resource in lib/eks-poc-stack.ts
+// example resource in lib/eks-poc.stack.ts
 test('SQS Queue Created', () => {
 //   const app = new cdk.App();
 //     // WHEN
