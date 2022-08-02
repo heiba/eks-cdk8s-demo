@@ -1,7 +1,7 @@
 import {ConfigMap} from 'cdk8s-plus-21'
-import {Chart} from 'cdk8s';
 import {Construct} from 'constructs';
 import * as fs from 'fs';
+import {Chart} from 'cdk8s';
 
 export class NginxConfigMapChart extends Chart
 {

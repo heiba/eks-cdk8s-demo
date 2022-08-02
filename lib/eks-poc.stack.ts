@@ -59,7 +59,7 @@ export class EksPocStack extends Stack
 				ClusterLoggingTypes.AUDIT,
 				ClusterLoggingTypes.AUTHENTICATOR,
 				ClusterLoggingTypes.SCHEDULER],
-			outputMastersRoleArn: true,
+			outputMastersRoleArn: false,
 			outputConfigCommand: true,
 			outputClusterName: true,
 			defaultCapacityInstance: InstanceType.of(InstanceClass.T4G, InstanceSize.MEDIUM),
@@ -74,16 +74,14 @@ export class EksPocStack extends Stack
 
 		const eksAdminClusterRoleBindingKubernetesManifest = eksCluster.addManifest('eks-admin-cluster-role-binding', eksAdminClusterRoleBindingManifest);
 
-		const cdk8sApp = new App();
-
-		const kubernetesDashboardChart = new KubernetesDashboardChart(cdk8sApp, 'kubernetes-dashboard-chart');
+		const kubernetesDashboardChart = new KubernetesDashboardChart(new App(), 'kubernetes-dashboard-chart');
 		eksCluster.addCdk8sChart('eks-kubernetes-dashboard-chart', kubernetesDashboardChart);
 		kubernetesDashboardChart.addDependency(eksAdminClusterRoleBindingKubernetesManifest);
 
-		const nginxConfigMapChart = new NginxConfigMapChart(cdk8sApp, 'nginx-config-map-chart');
+		const nginxConfigMapChart = new NginxConfigMapChart(new App(), 'nginx-config-map-chart');
 		eksCluster.addCdk8sChart('eks-nginx-config-map-chart', nginxConfigMapChart);
 
-		const nginxIngressControllerChart = new NginxIngressControllerChart(cdk8sApp, 'nginx-ingress-controller-chart');
+		const nginxIngressControllerChart = new NginxIngressControllerChart(new App(), 'nginx-ingress-controller-chart');
 		eksCluster.addCdk8sChart('eks-nginx-ingress-controller-chart', nginxIngressControllerChart);
 	}
 }
