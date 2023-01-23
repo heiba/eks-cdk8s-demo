@@ -1,4 +1,4 @@
-import {ConfigMap} from 'cdk8s-plus-21'
+import {ConfigMap} from 'cdk8s-plus-24'
 import {Construct} from 'constructs';
 import * as fs from 'fs';
 import {Chart} from 'cdk8s';

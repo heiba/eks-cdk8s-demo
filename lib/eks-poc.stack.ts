@@ -25,8 +25,8 @@ export class EksPocStack extends Stack
 			]
 		});
 
-		const eksMastersRole = new Role(this, 'eks-poc-cluster-masters-role', {
-			roleName: 'eks-poc-cluster-master-role',
+		const eksMastersRole = new Role(this, 'eks-poc-cluster-masters-role-v2', {
+			roleName: 'eks-poc-cluster-master-role-v2',
 			assumedBy: new AccountRootPrincipal(),
 			description: 'EKS POC Cluster Master Role',
 			inlinePolicies: {EksFullAccessPolicy: EksFullAccessPolicy},
@@ -35,8 +35,8 @@ export class EksPocStack extends Stack
 			]
 		});
 
-		const eksClusterRole = new Role(this, 'eks-poc-cluster-role', {
-			roleName: 'eks-poc-cluster-role',
+		const eksClusterRole = new Role(this, 'eks-poc-cluster-role-v2', {
+			roleName: 'eks-poc-cluster-role-v2',
 			assumedBy: new ServicePrincipal('eks.amazonaws.com'),
 			description: "EKS POC Cluster Role to manage other AWS services",
 			managedPolicies: [
@@ -48,9 +48,9 @@ export class EksPocStack extends Stack
 			]
 		})
 
-		const eksCluster = new Cluster(this, 'eks-poc-cluster', {
-			version: KubernetesVersion.V1_21,
-			clusterName: 'eks-poc-cluster',
+		const eksCluster = new Cluster(this, 'eks-poc-cluster-v2', {
+			version: KubernetesVersion.V1_24,
+			clusterName: 'eks-poc-cluster-v2',
 			defaultCapacityType: DefaultCapacityType.NODEGROUP,
 			defaultCapacity: 10,
 			clusterLogging: [
@@ -67,7 +67,7 @@ export class EksPocStack extends Stack
 			role: eksClusterRole
 		});
 
-		eksCluster.addServiceAccount('eks-admin-service-account', {
+		eksCluster.addServiceAccount('eks-admin-service-account-v2', {
 			name: 'eks-admin',
 			namespace: 'kube-system',
 		});

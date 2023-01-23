@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/eks-poc.iml" filepath="$PROJECT_DIR$/.idea/eks-poc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/eks-cdk8s-poc.iml" filepath="$PROJECT_DIR$/.idea/eks-cdk8s-poc.iml" />
     </modules>
   </component>
 </project>
